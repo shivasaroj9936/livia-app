@@ -1,0 +1,88 @@
+<section>
+  <form class="right">
+    <div class="section">
+      <h1>About Us</h1>
+      <editor apiKey="your-api-key" ></editor>
+      <div class="btn">
+        <button type="submit" mat-raised-button>
+          <ng-container *ngIf="!updateData">Save</ng-container>
+          <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+        </button>
+      </div>
+    </div>
+    <div class="section">
+      <h1>Statement</h1>
+      <!-- <editor apiKey="your-api-key" ></editor> -->
+      <mat-form-field class="text-area" appearance="outline">
+        <textarea matInput rows="10" placeholder="Start typing statement.........."></textarea>
+        <!-- <mat-error *ngIf="detailForm?.controls?.email?.errors?.pattern">*Enter Correct Email</mat-error> -->
+      </mat-form-field>
+      <div class="btn">
+        <button type="submit" mat-raised-button>
+          <ng-container *ngIf="!updateData">Save</ng-container>
+          <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+        </button>
+      </div>
+    </div>
+    <div class="section">
+      <h1>FAQ's</h1>
+      <div>
+        <div class="faq">
+          <div class="left">
+            <mat-icon>arrow_right</mat-icon>
+            <p>What all should I carry for my first appointment?</p>
+          </div>
+          <div class="right">
+            <button type="button" mat-raised-button>Edit</button>
+            <button type="button" class="del" mat-raised-button>Delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+        <button type="submit" mat-raised-button>
+          <ng-container *ngIf="!updateData">Add FAQ</ng-container>
+          <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+        </button>
+      </div>
+    </div>
+    <div class="section">
+      <h1>Contact Us</h1>
+      <div class="email">
+        <label>Receipient email address for contact form submission.</label>
+        <div class="field">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Enter your Email" required>
+            <!-- <mat-error *ngIf="detailForm?.controls?.email?.errors?.pattern">*Enter Correct Email</mat-error> -->
+          </mat-form-field>
+          <button [disabled]="false" type="button" mat-raised-button>
+            <ng-container *ngIf="!updateData">Add Email</ng-container>
+            <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+          </button>
+        </div>
+      </div>
+      <div class="emailData">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="contact_email">
+            <th mat-header-cell *matHeaderCellDef> Contact Email</th>
+            <td mat-cell *matCellDef="let element"> hi </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element"> <button mat-raised-button>Delete</button> </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="noData" class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9">No data found</td>
+          </tr>
+        </table>
+      </div>
+      <div class="btn">
+        <button type="submit" mat-raised-button>
+          <ng-container *ngIf="!updateData">Save</ng-container>
+          <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

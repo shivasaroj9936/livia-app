@@ -1,0 +1,61 @@
+section {
+    background-image: linear-gradient(to right, #1a1d6c, #00b790);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .box {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        .banner {
+            border-radius: 10px 0 0 10px;
+            width: 420px;
+            img {
+                height: 600px;
+            }
+            @media screen and (max-width: 900px) {
+                width: 350px;
+            }
+            @media screen and (max-width: 600px) {
+                display: none;
+            }
+        }
+        .content {
+            height: 600px;
+            overflow-y: scroll;
+            background-color: #ebeff0;
+            width: 480px;
+            border-radius: 0 10px 10px 0;
+            @media screen and (max-width: 900px) {
+                width: 350px;
+            }
+            @media screen and (max-width: 600px) {
+                width: 380px;
+                border-radius: 10px;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #dddcdc;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        @media screen and (max-width: 900px) {
+            // grid-template-columns: auto;
+        }
+    }
+}

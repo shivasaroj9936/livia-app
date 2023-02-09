@@ -1,0 +1,109 @@
+<section>
+  <form [formGroup]="formService.registerForm" (ngSubmit)="onSubmit()">
+    <h1>Add Document</h1>
+    <div class="content" formGroupName="document">
+      <div *ngIf="showErr">
+        <mat-error *ngIf="regForm.invalid">*Upload all the documents</mat-error>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Tax Compliance*</mat-label>
+        <a>
+          <mat-icon class="loc" (click)="fileInput1.click()">file_upload
+            <input #fileInput1 type="file" style="display:none;" (change)="onChange($event,'tax_compliance')" />
+          </mat-icon>
+        </a>
+        <a class="close" (click)="deleteImg('tax_compliance')" *ngIf="this.regForm.get('tax_compliance')?.value">
+          <mat-icon class="mat-18">close</mat-icon>
+        </a>
+        <input matInput disabled />
+        <mat-icon *ngIf="this.regForm.get('tax_compliance')?.value" class="upload">verified</mat-icon>
+        <!-- <mat-spinner class="spin" [diameter]="25" *ngIf="!this.regForm.get('tax_compliance')?.value && uploadSpin"></mat-spinner> -->
+        <!-- <mat-error *ngIf="this.regForm.get('tax_compliance')?.errors?.required">*Tax Compliance is required</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>cr_12*</mat-label>
+        <a>
+          <mat-icon class="loc" (click)="fileInput2.click()">file_upload
+            <input #fileInput2 type="file" style="display:none;" (change)="onChange($event,'cr_12')" />
+          </mat-icon>
+        </a>
+        <a class="close" (click)="deleteImg('cr_12')" *ngIf="this.regForm.get('cr_12')?.value">
+          <mat-icon class="mat-18">close</mat-icon>
+        </a>
+        <input matInput disabled />
+        <mat-icon *ngIf="this.regForm.get('cr_12')?.value" class="upload">verified</mat-icon>
+        <!-- <mat-spinner class="spin" [diameter]="25" *ngIf="!this.regForm.get('cr_12')?.value && uploadSpin"></mat-spinner> -->
+        <!-- <mat-error *ngIf="this.regForm.get('cr_12')?.errors?.required">*cr_12 is required</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>KRA Pin Certificate*</mat-label>
+        <a>
+          <mat-icon class="loc" (click)="fileInput3.click()">file_upload
+            <input #fileInput3 type="file" style="display:none;" (change)="onChange($event,'kra_pin_certificate')" />
+          </mat-icon>
+        </a>
+        <a class="close" (click)="deleteImg('kra_pin_certificate')" *ngIf="this.regForm.get('kra_pin_certificate')?.value">
+          <mat-icon class="mat-18">close</mat-icon>
+        </a>
+        <input matInput disabled />
+        <mat-icon *ngIf="this.regForm.get('kra_pin_certificate')?.value" class="upload">verified</mat-icon>
+        <!-- <mat-spinner class="spin" [diameter]="25" *ngIf="!this.regForm.get('kra_pin_certificate')?.value && uploadSpin"></mat-spinner> -->
+        <!-- <mat-error *ngIf="this.regForm.get('kra_pin_certificate')?.errors?.required">*KRA Pin Certificate is required</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Regulatory Licence 1*</mat-label>
+        <a>
+          <mat-icon class="loc" (click)="fileInput4.click()">file_upload
+            <input #fileInput4 type="file" style="display:none;" (change)="onChange($event,'regulator_licenses_1')" />
+          </mat-icon>
+        </a>
+        <a class="close" (click)="deleteImg('regulator_licenses_1')" *ngIf="this.regForm.get('regulator_licenses_1')?.value">
+          <mat-icon class="mat-18">close</mat-icon>
+        </a>
+        <input matInput disabled />
+        <mat-icon *ngIf="this.regForm.get('regulator_licenses_1')?.value" class="upload">verified</mat-icon>
+        <!-- <mat-spinner class="spin" [diameter]="25" *ngIf="!this.regForm.get('regulator_licenses_1')?.value && uploadSpin"></mat-spinner> -->
+        <!-- <mat-error *ngIf="this.regForm.get('regulator_licenses_1')?.errors?.required">*Regulatory Licence 1 is required</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Regulatory Licence 2</mat-label>
+        <a>
+          <mat-icon class="loc" (click)="fileInput5.click()">file_upload
+            <input #fileInput5 type="file" style="display: none" (change)="onChange($event,'regulator_licenses_2')" />
+          </mat-icon>
+        </a>
+        <a class="close" (click)="deleteImg('regulator_licenses_2')" *ngIf="this.regForm.get('regulator_licenses_2')?.value">
+          <mat-icon class="mat-18">close</mat-icon>
+        </a>
+        <input matInput disabled />
+        <mat-icon *ngIf="this.regForm.get('regulator_licenses_2')?.value" class="upload">verified</mat-icon>
+        <!-- <mat-spinner class="spin" [diameter]="25" *ngIf="!this.regForm.get('regulator_licenses_2')?.value && uploadSpin"></mat-spinner> -->
+        <!-- <mat-error *ngIf="this.regForm.get('regulator_licenses_2')?.errors?.required">*Regulatory Licence 2 is required</mat-error> -->
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Regulatory Licence 3</mat-label>
+        <a>
+          <mat-icon class="loc" (click)="fileInput6.click()">file_upload
+            <input #fileInput6 type="file" style="display: none" (change)="onChange($event,'regulator_licenses_3')" />
+          </mat-icon>
+        </a>
+        <a class="close" (click)="deleteImg('regulator_licenses_3')" *ngIf="this.regForm.get('regulator_licenses_3')?.value">
+          <mat-icon class="mat-18">close</mat-icon>
+        </a>
+        <input matInput disabled />
+        <mat-icon *ngIf="this.regForm.get('regulator_licenses_3')?.value" class="upload">verified</mat-icon>
+        <!-- <mat-spinner class="spin" [diameter]="25" *ngIf="this.regForm.get('regulator_licenses_3')?.dirty && uploadSpin"></mat-spinner> -->
+        <!-- <mat-error *ngIf="this.regForm.get('regulator_licenses_3')?.errors?.required">*Regulatory Licence 3 is required</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="nav">
+      <button type="submit" *ngIf="regForm.valid" mat-raised-button color="primary" matStepperNext>
+        <ng-container *ngIf="!spinner">Save and Next</ng-container>
+        <mat-spinner [diameter]="40" *ngIf="spinner"></mat-spinner>
+      </button>
+      <button type="button" (click)="showErr=true" *ngIf="regForm.invalid" mat-raised-button color="primary">
+        Save and Next
+      </button>
+    </div>
+  </form>
+</section>

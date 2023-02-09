@@ -1,0 +1,37 @@
+<section>
+    <div class="content">
+        <div class="search">
+            <mat-form-field class="dr" appearance="outline">
+                <mat-label>Search by Test Name</mat-label>
+                <input matInput [formControl]="searchFilter" placeholder="Search" #input>
+                <mat-icon matPrefix>search</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="spin"><mat-spinner [diameter]="100" *ngIf="spinner"></mat-spinner></div>
+        <div class="data">
+            <table *ngIf="!spinner" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Imaging Tests Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="test_fee">
+                    <th mat-header-cell *matHeaderCellDef> Test Fee </th>
+                    <td mat-cell *matCellDef="let element"> {{element?.test_fee}} </td>
+                </ng-container>
+                <ng-container matColumnDef="insurance_company_name">
+                    <th mat-header-cell *matHeaderCellDef> Insurance Company </th>
+                    <td mat-cell *matCellDef="let element"> {{element?.insurance_company_name}} </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="12">No data matching the filter</td>
+                </tr>
+            </table>
+        </div>
+        <div class="paginator">
+            <mat-paginator hidePageSize="true" [pageSizeOptions]="[10, 20]" showFirstLastButtons (page)="getPageDetails($event)"></mat-paginator>
+        </div>
+    </div>
+</section>

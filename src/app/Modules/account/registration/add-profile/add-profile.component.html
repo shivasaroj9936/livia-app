@@ -1,0 +1,58 @@
+<section>
+    <form [formGroup]="formService.registerForm">
+        <h1>Add Lab Profile details</h1>
+        <div class="content" formGroupName="profile">
+            <div *ngIf="showErr"><mat-error *ngIf="regForm.invalid">*Fill all the fields</mat-error></div>
+          <div class="image">
+            <div *ngIf="btn" class="logo">
+                <button type="button" mat-button (click)="fileInput1.click()">
+                    <mat-icon>add</mat-icon>
+                    <input #fileInput1 type="file" style="display: none" (change)="onFileChange($event)"/>
+                </button>
+                <p>Add Logo</p>
+                <div *ngIf="this.regForm.get('avatar')?.dirty"> <mat-error *ngIf="this.regForm.get('avatar')?.errors?.required || showErr">*Logo is required</mat-error></div>
+            </div>
+            <div class="preview" *ngIf="!btn && !imgSpinner">
+              <a (click)="deleteImg()">
+                  <mat-icon class="loc">cancel</mat-icon>
+              </a>
+              <img id="blah" [src]="img+this.regForm.get('avatar')?.value" alt="your image" />
+              <!-- <img [src]="img+url" alt=""> -->
+            </div>
+            <mat-spinner [diameter]="60" *ngIf="imgSpinner"></mat-spinner>
+          </div>
+            <label>Lab Name</label>
+            <mat-form-field appearance="outline">
+                <input formControlName="lab_name" matInput placeholder="Lab Name" required />
+                <mat-error *ngIf="this.regForm.get('lab_name')?.errors?.required">*Lab name is required</mat-error>
+                <mat-error *ngIf="this.regForm.get('lab_name')?.errors?.minlength">*Minimum 3 character is required</mat-error>
+            </mat-form-field>
+            <label>County</label>
+            <mat-form-field appearance="outline" >
+                <!-- <mat-label>Country</mat-label> -->
+                <mat-select placeholder="Select County" formControlName="physical_address">
+                    <mat-option *ngFor="let citie of city" [value]=citie>
+                        {{citie.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="this.regForm.get('physical_address')?.errors?.required">*Country is required</mat-error>
+            </mat-form-field>
+            <label>Address</label>
+            <mat-form-field appearance="outline">
+                <a (click)="openDialog()">
+                    <mat-icon class="loc">near_me</mat-icon>
+                </a>
+                <input matInput placeholder="Start typing your Address"  formControlName="address" required />
+                <mat-error *ngIf="this.regForm.get('address')?.errors?.required">*Address is required</mat-error>
+            </mat-form-field>
+            <div class="nav">
+                <button (click)="submit()" *ngIf="regForm.valid" type="submit" mat-raised-button color="primary" matStepperNext>
+                    <ng-container *ngIf="!spinner">Save and Next</ng-container> <mat-spinner [diameter]="40" *ngIf="spinner"></mat-spinner>
+                </button>
+                <button type="button" (click)="showErr=true" *ngIf="regForm.invalid" mat-raised-button color="primary">
+                    Save and Next
+                </button>
+            </div>
+        </div>
+    </form>
+</section>

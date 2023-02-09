@@ -1,0 +1,282 @@
+<section>
+    <div class="left">
+        <header>
+            <h2>All dental, inpatient or outpatient procedures that you carry out on the patient require
+                preauthorization.
+                <a>Click here to create a preauth and get approval.</a>
+            </h2>
+            <div class="subHead">
+                <h2>Important Message</h2>
+                <h3>Dear Doctor, we have transitioned to E-prescriptions. If issuing a prescription is part of your
+                    treatment plan, kindly create the E-prescription when creating the E-claim within this screen.
+                    This will ensure that we are able to map the E-prescription to your claim and also make the patient
+                    journey completely paperless.
+                    We thank you for your continued support and the excellent services you are offering to our clients.
+                </h3>
+            </div>
+            <h1>Create Claim</h1>
+        </header>
+        <main>
+            <div class="step">
+                <div class="stepper">Step 1</div>
+                <form class="stepForm">
+                    <div class="row">
+                        <div class="field">
+                            <label>Claim Date</label>
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="date" required>
+                                <!-- <mat-error *ngIf="editFrom?.controls?.address?.errors?.required">*Address is required
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                        <div class="field">
+                            <label>Patient Insurance <span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select Insurance</mat-label>
+                                <mat-select (selectionChange)="onSelect($event.value)">
+                                    <mat-option value="">None</mat-option>
+                                    <mat-option *ngFor="let insurance of insuranceList" [value]=insurance>
+                                        {{insurance.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="field">
+                            <label>Patient Benefits</label>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="row2" *ngIf="insuranceDetail">
+                        <div class="search">
+                            <mat-radio-group aria-labelledby="example-radio-group-label">
+                                <div class="select">
+                                    <mat-radio-button value="memberNo">
+                                        Search with Member no.
+                                    </mat-radio-button>
+                                    <img src="../../../../../assets/banner.png">
+                                </div>
+                                <div class="select">
+                                    <mat-radio-button value="smartCard">
+                                        Search with Smart card 
+                                    </mat-radio-button>
+                                    <img src="../../../../../assets/banner.png">
+                                </div>
+                            </mat-radio-group>
+                        </div>
+                        <div class="field">
+                            <label>Member no.<span class="asterisk">*</span></label>
+                            <div class="cardField">
+                                <mat-form-field appearance="outline">
+                                    <input placeholder="Type in the entire card number and then press" matInput required>
+                                </mat-form-field>
+                                <button mat-button>Search</button>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Employer name<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <input matInput required>
+                            </mat-form-field>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="row">
+                        <div class="field">
+                            <label>Phone no<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <span matPrefix>+254 &nbsp;</span>
+                                <input matInput placeholder="7XXXXXXXXX" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="field">
+                            <label>Family member's phone no<span class="asterisk">*</span></label>
+                                <mat-form-field appearance="outline">
+                                    <span matPrefix>+254 &nbsp;</span>
+                                    <input matInput placeholder="7XXXXXXXXX" required>
+                                </mat-form-field>
+                                <mat-checkbox> Use principal member's phone no.</mat-checkbox>
+                        </div>
+                        <div class="field">
+                            <label>Patient Name<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <input matInput required>
+                            </mat-form-field>
+                        </div>
+                        <div class="field">
+                            <label>Gender<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <input matInput required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row4">
+                        <div class="field">
+                            <label>Birthday<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <input matInput required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="step">
+                <div class="stepper">Step 2</div>
+                <form class="stepForm2">
+                    <div class="field">
+                        <label>Type of Claim <span class="asterisk">*</span></label>
+                        <mat-form-field appearance="outline">
+                            <mat-select (selectionChange)="onSelect($event.value)">
+                                <mat-option value="">None</mat-option>
+                                <mat-option *ngFor="let insurance of insuranceList" [value]=insurance.id>
+                                    {{insurance.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <label>Consultant type <span class="asterisk">*</span></label>
+                        <mat-form-field appearance="outline">
+                            <mat-select (selectionChange)="onSelect($event.value)">
+                                <mat-option value="">None</mat-option>
+                                <mat-option *ngFor="let insurance of insuranceList" [value]=insurance.id>
+                                    {{insurance.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-checkbox> No Charge</mat-checkbox>
+                    </div>
+                    <div class="field">
+                        <label>Consultant fee<span class="asterisk">*</span></label>
+                        <mat-form-field appearance="outline">
+                            <input type="number" matInput required>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <label>Clinic <span class="asterisk">*</span></label>
+                        <mat-form-field appearance="outline">
+                            <mat-select (selectionChange)="onSelect($event.value)">
+                                <mat-option value="">None</mat-option>
+                                <mat-option *ngFor="let insurance of insuranceList" [value]=insurance.id>
+                                    {{insurance.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </form>
+            </div>
+            <div class="step">
+                <div class="stepper">Step 3</div>
+                <form class="stepForm3">
+                    <div class="field">
+                        <label>Final Diagnosis (ICD10)<span class="asterisk">*</span></label>
+                        <mat-form-field class="dr" appearance="outline">
+                            <input matInput #input>
+                            <mat-icon matSuffix>search</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <label>Condition was first diagnosed<span class="asterisk">*</span></label>
+                        <mat-form-field appearance="outline">
+                            <input matInput required>
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                        <label>Details of Previous Treatment and Given Recommendations<span
+                                class="asterisk">*</span></label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <textarea matInput rows="6"></textarea>
+                        </mat-form-field>
+                    </div>
+                </form>
+            </div>
+            <div class="step">
+                <div class="stepper">Step 4</div>
+                <form>
+                    <div class="stepForm2">
+                        <div class="field">
+                            <label>Sickness/Accident<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <mat-select (selectionChange)="onSelect($event.value)">
+                                    <mat-option value="accident">Accident</mat-option>
+                                    <mat-option value="sickness">Sickness</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="bottom" *ngIf="isIllness">
+                        <div class="field">
+                            <label>Cause of Illness(es)<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <input matInput required>
+                            </mat-form-field>
+                            <mat-checkbox> Patient requires refferal to a specialist</mat-checkbox>
+                        </div>
+                        <div class="field">
+                            <label>Sickness condition<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <mat-select (selectionChange)="onSelect($event.value)">
+                                    <mat-option value="accident">Accident</mat-option>
+                                    <mat-option value="sickness">Sickness</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="field">
+                            <label>Nature of Treatment and Given Recommendations<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <mat-select (selectionChange)="onSelect($event.value)">
+                                    <mat-option value="accident">Accident</mat-option>
+                                    <mat-option value="sickness">Sickness</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="bottom" *ngIf="isAccident">
+                        <div class="field">
+                            <label>Date Of Accident<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <input #fromInput class="date" matInput [matDatepicker]="picker1" placeholder="dd/mm/yyyy" readonly>
+                                <mat-icon class="cancel" matDatepickerToggleIcon>clear</mat-icon>
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="field">
+                            <label>Nature of Injuries<span class="asterisk">*</span></label>
+                            <mat-form-field appearance="outline">
+                                <mat-select (selectionChange)="onSelect($event.value)">
+                                    <mat-option value="accident">Accident</mat-option>
+                                    <mat-option value="sickness">Sickness</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div class="condition">
+                <mat-checkbox></mat-checkbox>
+                <span>
+                    I here by confirm that the information provided above is correct and true to the best of my knowledge.
+                    <span class="asterisk">*</span>
+                </span>
+            </div>
+            <div class="btn">
+                <button type="submit" mat-raised-button>
+                    <ng-container *ngIf="!updateData">Update</ng-container>
+                    <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+                </button>
+                <button type="button" routerLink="/dashboard/profile" mat-raised-button>
+                    Cancel
+                </button>
+            </div>
+        </footer>
+    </div>
+    <div class="right">
+        <h1>Member Information</h1>
+        <div class="data">
+            <h4>Memebership card photo</h4>
+            <img src="../../../../../assets/banner.png" alt="">
+        </div>
+    </div>
+</section>

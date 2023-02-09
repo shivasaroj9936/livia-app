@@ -1,0 +1,239 @@
+section {
+    display: grid;
+    grid-template-columns: auto 20%;
+    column-gap: 10px;
+    @media screen and (max-width: 1200px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .left {
+        header {
+            h2 {
+                a {
+                    text-decoration: none;
+                    color: #57c7be;
+                    cursor: pointer;
+                }
+            }
+            .subHead {
+                background-color: #005362;
+                border-radius: 15px;
+                padding: 15px;
+                h2 {
+                    color: #f2fe01;
+                }
+                h3 {
+                    color: white;
+                    font-weight: 500;
+                }
+            }
+            h1 {
+                margin-top: 8px;
+                color: #57c7be;
+                font-size: 30px;
+            }
+        }
+        .asterisk {
+            margin-left: 4px;
+            font-size: 16px;
+            color: red;
+        }
+        main {
+            .step {
+                .stepper {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #57c7be;
+                    color: white;
+                    height: 40px;
+                    width: 100px;
+                    border-radius: 10px;
+                    font-size: 18px;
+                }
+                form {
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin: 1.5% 0;
+                    box-shadow: 5px 5px 5px -3px rgb(206, 203, 203), 0px 8px 10px 1px rgb(206, 203, 203),
+                        0px 3px 14px 2px rgb(206, 203, 203);
+                    gap: 15px;
+                    .bottom {
+                        display: grid;
+                        grid-template-columns: auto auto 50%;
+                        column-gap: 15px;
+                        ::ng-deep {
+                            .mat-icon-button {
+                                background-color: transparent;
+                                box-shadow: none;
+                            }
+                        }
+                        .date {
+                            position: relative;
+                        }
+                        .cancel {
+                            cursor: pointer;
+                            position: absolute;
+                            right: 0;
+                            bottom: 13px;
+                            z-index: 1;
+                        }
+                        @media screen and (max-width: 1100px) {
+                            grid-template-columns: auto auto;
+                        }
+                        @media screen and (max-width: 550px) {
+                            grid-template-columns: auto;
+                        }
+                    }
+                    .field {
+                        display: flex;
+                        flex-direction: column;
+                        ::ng-deep {
+                            .mat-form-field-wrapper {
+                                padding-bottom: 0;
+                            }
+                        }
+                    }
+                }
+                .stepForm {
+                    display: grid;
+                    grid-template-rows: auto auto auto auto;
+                    .row {
+                        display: grid;
+                        grid-template-columns: 24% 24% 24% 24%;
+                        column-gap: 10px;
+                        @media screen and (max-width: 1000px) {
+                            grid-template-columns: auto auto;
+                        }
+                        @media screen and (max-width: 550px) {
+                            grid-template-columns: auto;
+                        }
+                    }
+                    .row2 {
+                        display: grid;
+                        grid-template-columns: auto auto auto auto;
+                        column-gap: 10px;
+                        @media screen and (max-width: 1000px) {
+                            grid-template-columns: auto auto;
+                        }
+                        @media screen and (max-width: 800px) {
+                            grid-template-columns: auto;
+                        }
+                        .select{
+                            display: flex;
+                            align-items: center;
+                        }
+                        .search {
+                            mat-radio-group {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            img {
+                                height: 50px;
+                                width: 150px;
+                                margin-left: 6px;
+                                margin-bottom: 6px;
+                            }
+                            ::ng-deep {
+                                .mat-radio-label-content {
+                                    display: flex;
+                                    align-items: center;
+                                }
+                            }
+                        }
+                        .cardField {
+                            display: grid;
+                            grid-template-columns: 80% auto;
+                            margin-right: 30px;
+                        }
+                        button {
+                            background-color: blue;
+                            color: white;
+                            height: 48px;
+                            width: 100px;
+                            margin: 6px 0 0 10px;
+                        }
+                    }
+                    .row4 {
+                        display: grid;
+                        grid-template-columns: 25%;
+                        column-gap: 15px;
+                        @media screen and (max-width: 550px) {
+                            grid-template-columns: auto;
+                        }
+                    }
+                }
+                .stepForm2 {
+                    display: grid;
+                    grid-template-columns: 25% auto auto auto;
+                    @media screen and (max-width: 1000px) {
+                        grid-template-columns: auto auto;
+                    }
+                    @media screen and (max-width: 550px) {
+                        grid-template-columns: auto;
+                    }
+                }
+                .stepForm3 {
+                    display: grid;
+                    grid-template-columns: auto auto 50%;
+                    @media screen and (max-width: 1000px) {
+                        grid-template-columns: auto auto;
+                    }
+                    @media screen and (max-width: 550px) {
+                        grid-template-columns: auto;
+                    }
+                }
+            }
+        }
+        mat-checkbox {
+            color: gray;
+        }
+        footer {
+            margin-bottom: 18px;
+            .btn {
+                display: flex;
+                justify-content: flex-end;
+                button {
+                    width: 15%;
+                    color: white;
+                    margin: 10px 10px 0 0;
+                    background-image: linear-gradient(to right, #1a1d6c, #00b790);
+                    padding: 5px;
+                    font-size: 18px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    ::ng-deep .mat-progress-spinner circle,
+                    .mat-spinner circle {
+                        stroke: white;
+                    }
+                }
+                button:hover {
+                    background-image: linear-gradient(to right, #00b790, #1a1d6c);
+                }
+            }
+        }
+    }
+    .right {
+        border-left: 2px solid rgb(216, 212, 212);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media screen and (max-width: 1200px) {
+            border-left: none;
+            border-bottom: 2px solid rgb(216, 212, 212);
+        }
+        .data {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img {
+                height: 200px;
+                width: 200px;
+                border-radius: 10px;
+            }
+        }
+    }
+}

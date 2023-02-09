@@ -1,0 +1,101 @@
+section {
+  overflow: hidden;
+  header {
+    position: relative;
+    background-color: #007b81;
+    color: white;
+    text-align: center;
+    padding: 1px 0;
+    h1 {
+      padding-top: 3px;
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      mat-icon {
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+  .spin {
+    display: flex;
+    justify-content: center;
+  }
+  main {
+    margin: 8px;
+    .document {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 20px;
+      justify-content: center;
+      .data {
+        box-shadow: 5px 5px 5px -3px gray, 0px 8px 10px 1px rgb(255, 255, 255), 0px 3px 14px 2px rgb(255, 255, 255);
+        height: 180px;
+        width: 250px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .image {
+          margin-top: 10px;
+          background-color: #e9e4d9;
+          height: 160px;
+          width: 240px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          img {
+            border-radius: 8px;
+            height: 140px;
+            width: 240px;
+          }
+        }
+        h4 {
+          font-weight: 500;
+        }
+      }
+    }
+    .description {
+      display: flex;
+      margin: 15px 0 15px 32px;
+      // justify-content: center;
+      .term {
+        margin-left: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+    button {
+      height: 40px;
+      width: 100px;
+      color: white;
+      margin: 1%;
+    }
+    .cancel {
+      background-color: #929292;
+    }
+    .process {
+      background-image: linear-gradient(to right, #1a1d6c, #00b790);
+    }
+    .process:disabled {
+      cursor: not-allowed;
+    }
+    .process:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0;
+    background-color: #ebeff0;
+  }
+}

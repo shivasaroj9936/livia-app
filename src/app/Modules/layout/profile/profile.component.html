@@ -1,0 +1,102 @@
+<section>
+    <div class="spin"><mat-spinner [diameter]="100" *ngIf="spinner"></mat-spinner></div>
+    <div class="content" *ngIf="!spinner">
+        <div class="left">
+            <div class="profile">
+                <img [src]=img+profileData.avatar
+                    alt="" />
+                <h2>{{profileData.name_prefix + " " + profileData.first_name + " " + profileData.last_name}}</h2>
+            </div>
+            <div class="info">
+                <div>
+                    <mat-icon>mail</mat-icon> <h4>{{profileData.email}}</h4>
+                </div>
+                <div>
+                    <mat-icon>call</mat-icon> <h4>{{"+"+profileData.phone_code +" "+ profileData.phone_number}}</h4>
+                </div>
+                <div>
+                    <mat-icon>person_pin_circle</mat-icon> <h4>{{profileData.physical_address}}</h4>
+                </div>
+            </div>
+            <button routerLink="editProfile" mat-raised-button color="primary">Edit Profile</button>
+        </div>
+        <div class="right">
+            <div class="image">
+                <h2>Imaging Photos</h2>
+                <div class="cursor">
+                    <mat-carousel timings="250ms ease-in" [autoplay]="true" [interval]="6000" color="accent" maxWidth="auto"
+                    [proportion]="25" [slides]="5" [loop]="true" [hideArrows]="false" [hideIndicators]="false"
+                    [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
+                    <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slides; let i = index" [image]="slide"
+                        overlayColor="#00000040" [hideOverlay]="false"></mat-carousel-slide>
+                </mat-carousel>
+                <!-- <carousel [images]="images">
+                </carousel> -->
+                </div>
+            </div>
+            <div class="bio">
+                <h2>Bio</h2>
+                <h4>{{profileData.lab_bio}}</h4>
+            </div>
+            <div class="doc">
+                <h2>Documents</h2>
+                <div class="upload">
+                    <ng-container *ngIf="profileData.tax_compliance">
+                        <div>
+                            <img [src]=img+profileData.tax_compliance alt="">
+                            <p>Tax Compliance</p>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="profileData.cr_12">
+                        <div>
+                            <img [src]=img+profileData.cr_12 alt="">
+                            <p>CR 12</p>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="profileData.kra_pin_certificate">
+                        <div>
+                            <img [src]=img+profileData.kra_pin_certificate alt="">
+                            <p>KRA PIN Certificate</p>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="profileData.regulator_licenses_1">
+                        <div>
+                            <img [src]=img+profileData.regulator_licenses_1 alt="">
+                            <p>Regulator Licenses 1</p>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="profileData.regulator_licenses_2">
+                        <div>
+                            <img [src]=img+profileData.regulator_licenses_2 alt="">
+                            <p>Regulator Licenses 2</p>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="profileData.regulator_licenses_3">
+                        <div>
+                            <img [src]=img+profileData.regulator_licenses_3 alt="">
+                            <p>Regulator Licenses 3</p>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="company">
+                <h2>Imaging Insurance Companies</h2>
+                <div class="data">
+                    <div class="insurance" *ngFor="let item of profileData.insurance_company">
+                        <img [src]=img+item.avatar alt="">
+                        <p>{{item.name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="payment">
+                <div class="info">
+                    <h2>Payments Details</h2>
+                    <button mat-raised-button>Add Payment Details</button>
+                </div>
+                <div class="data">
+                    <p>No Details Added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

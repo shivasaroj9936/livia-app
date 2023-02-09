@@ -1,0 +1,51 @@
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 100px;
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1{
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+        }
+        mat-form-field{
+            color: gray;
+            width: 400px;
+        }
+        ::ng-deep .mat-form-field-outline {
+            color: gray;
+        }
+    }
+   .btn{
+       margin-right: 225px;
+    }
+    button{
+        background-image: linear-gradient(to right, #1a1d6c, #00b790);
+        color: white;
+    }
+    button:hover{
+        background-image: linear-gradient(to right, #00b790 , #1a1d6c);
+    }
+    
+}
+::ng-deep {
+    .mat-dialog-container {
+        padding: 0;
+        background-color: aliceblue !important;
+        color: black;
+    }
+    .mat-form-field-outline {
+        color: gray;
+    }
+    mat-label{
+        color: gray;
+    }
+}
+
+

@@ -1,0 +1,86 @@
+<section>
+    <div class="spin">
+        <mat-spinner [diameter]="100" *ngIf="spinner"></mat-spinner>
+    </div>
+    <form *ngIf="!spinner" [formGroup]="detailForm">
+        <div class="detail">
+            <div class="box claimData">
+                <h3>Claim Id: {{reportData?.claim_id}}</h3>
+                <h3>Date: {{reportData?.claim_date}}</h3>
+                <h3>Status: {{reportData?.lab_status | statusPipe : "request"}}</h3>
+            </div>
+            <div class="box info">
+                <img [src]="img + reportData?.doctor_image" alt="">
+                <div class="data">
+                    <h3>Doctor: {{reportData?.doctor_name}}</h3>
+                    <h3>Ph. No.: {{reportData?.doctor_phone}}</h3>
+                    <h3>Email: {{reportData?.doctor_email}}</h3>
+                </div>
+            </div>
+            <div class="box info">
+                <img [src]="img + reportData?.patient_image" alt="">
+                <div class="data">
+                    <h3>Patient: {{reportData?.patient_name}}</h3>
+                    <h3>Ph. No.: {{reportData?.patient_phone}}</h3>
+                    <div class="email">
+                        <mat-form-field appearance="outline">
+                            <input matInput formControlName="email" placeholder="email" required>
+                            <mat-error *ngIf="detailForm?.controls?.email?.errors?.pattern">*Enter Correct Email</mat-error>
+                        </mat-form-field>
+                        <button [disabled]="detailForm?.controls?.email?.invalid" (click)="setEmail()" type="button" mat-raised-button>
+                            <ng-container *ngIf="!emailData">Add Email</ng-container>
+                            <mat-spinner [diameter]="40" *ngIf="emailData"></mat-spinner>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class="heading">Lab Tests</h3>
+        <div class="test" *ngFor="let item of reportData.test_details; let idx=index">
+            <div class="box left">
+                <div class="data">
+                    <h3>{{idx+1}} {{item?.test_name}}</h3>
+                    <h3>58 Sec</h3>
+                </div>
+            </div>
+            <div class="box right">
+                <div class="first">
+                    <h3>Upload Report</h3>
+                    <button mat-button>Accepted</button>
+                </div>
+                <div class="content">
+                    <div class="doc">
+                        <button *ngIf="!uploadSpin" type="button" class="add" mat-button (click)="fileInput2.click()">+
+                            <input #fileInput2 id="file" multiple="" type="file" style="display:none;"
+                                (change)="onFileChange($event,'document')" />
+                        </button>
+                        <mat-spinner class="spin" [diameter]="40" *ngIf="uploadSpin"></mat-spinner>
+                    </div>
+                    <ng-container *ngFor="let url of payLoadData; let idx= index">
+                        <div class="preview">
+                            <a (click)="deleteImg(idx)">
+                                <mat-icon class="loc">cancel</mat-icon>
+                            </a>
+                            <img [src]="img+url" alt="">
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="notes">
+                    <h3>Add Notes</h3>
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <textarea matInput rows="6" placeholder="Add notes here....." formControlName="notes"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="btn">
+                    <button type="button" (click)="sendReport(idx,0)" mat-raised-button>
+                        Save
+                    </button>
+                    <button (click)="sendReport(idx,1)" type="submit" mat-raised-button>
+                        <ng-container *ngIf="!updateData">Send To Doctor</ng-container> 
+                        <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

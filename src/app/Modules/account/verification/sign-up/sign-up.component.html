@@ -1,0 +1,88 @@
+<section>
+    <div class="data">
+        <form [formGroup]="signForm">
+            <label>Name of Admin</label>
+            <div class="name">
+                <mat-form-field appearance="outline" >
+                    <mat-label>Select</mat-label>
+                    <mat-select formControlName="name_prefix">
+                        <mat-option value="Mr.">Mr.</mat-option>
+                        <mat-option value="Mrs.">Mrs.</mat-option>
+                        <mat-option value="Other">Other</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="signForm?.controls?.title?.errors?.required">*Required</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="first_name" placeholder="First Name" />
+                    <mat-error *ngFor="let validation of validationMessage?.firstName">
+                        <mat-error class="error-message" *ngIf="signForm?.get('first_name')?.hasError(validation?.type) && (signForm?.get('first_name')?.dirty || signForm?.get('first_name')?.touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                    <!-- <mat-error *ngIf="signForm?.controls?.first_name?.errors?.required">*First name is required</mat-error>
+                    <mat-error *ngIf="signForm?.controls?.first_name?.errors?.minlength">*Minimum 3 character is required</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="last_name" placeholder="Last Name">
+                    <mat-error *ngFor="let validation of validationMessage?.lastName">
+                        <mat-error class="error-message" *ngIf="signForm?.get('last_name')?.hasError(validation?.type) && (signForm?.get('last_name')?.dirty || signForm?.get('last_name')?.touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                    <!-- <mat-error *ngIf="signForm?.controls?.last_name?.errors?.required">*Last name is required</mat-error>
+                    <mat-error *ngIf="signForm?.controls?.last_name?.errors?.minlength">*Minimum 3 character is required</mat-error> -->
+                </mat-form-field>
+            </div>
+            <label for="">Contact Number</label>
+            <div class="contact">
+                <mat-form-field appearance="outline" >
+                    <mat-label>Country</mat-label>
+                    <mat-select formControlName="country_code">
+                        <mat-option value="ke">Kenya</mat-option>
+                        <mat-option value="usa">USA</mat-option>
+                        <mat-option value="uk">UK</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="signForm?.controls?.country?.errors?.required">*Select country</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter Phone Number</mat-label>
+                    <input type="number" matInput formControlName="phone_number" [maxlength]="4" placeholder="Phone Number">
+                    <mat-error *ngFor="let validation of validationMessage?.phoneNumber">
+                        <mat-error class="error-message" *ngIf="signForm?.get('phone_number')?.hasError(validation?.type) && (signForm?.get('phone_number')?.dirty || signForm?.get('phone_number')?.touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                    <!-- <mat-error *ngIf="signForm?.controls?.phone_number?.errors?.required">*Phone number is required</mat-error>
+                    <mat-error *ngIf="signForm?.controls?.phone_number?.errors?.pattern">*Enter 9 digit number and start with 7</mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="email">
+                <label>Email</label>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="email" placeholder="user@gmail.com" required>
+                    <mat-error *ngFor="let validation of validationMessage?.email">
+                        <mat-error class="error-message" *ngIf="signForm?.get('email')?.hasError(validation?.type) && (signForm?.get('email')?.dirty || signForm?.get('email')?.touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                    <!-- <mat-error *ngIf="signForm?.controls?.email?.errors?.required">*Email is required</mat-error>
+                    <mat-error *ngIf="signForm?.controls?.email?.errors?.email">*Enter correct email</mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="pass">
+                <label>Create Password</label>
+                <mat-form-field appearance="outline">
+                    <a (click)="toggleShow()">
+                        <mat-icon *ngIf="!showPassword" class="loc">visibility</mat-icon>
+                        <mat-icon *ngIf="showPassword" class="loc">visibility_off</mat-icon>
+                    </a>
+                    <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="*******" required>
+                    <mat-error *ngFor="let validation of validationMessage?.password">
+                        <mat-error class="error-message" *ngIf="signForm?.get('password')?.hasError(validation?.type) && (signForm?.get('password')?.dirty || signForm?.get('password')?.touched)">{{validation.message}}</mat-error>
+                    </mat-error>
+                    <!-- <mat-error *ngIf="signForm?.controls?.password?.errors?.required">*Password is required</mat-error>
+                    <mat-error *ngIf="signForm?.controls?.password?.errors?.minlength || signForm?.controls?.password?.errors?.pattern">*Enter minimum eight characters, at least one letter, one number and one special character. </mat-error> -->
+                </mat-form-field>
+            </div>
+            <div class="nav">
+                <button (click)="onSubmit()" type="submit" mat-raised-button color="primary">
+                <ng-container *ngIf="!spinner">Signup</ng-container> <mat-spinner [diameter]="40" *ngIf="spinner"></mat-spinner>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

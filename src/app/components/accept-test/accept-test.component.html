@@ -1,0 +1,57 @@
+<section>
+    <header>
+        <h1>Accept Test</h1>
+        <div class="close">
+          <mat-icon (click)="close()">close</mat-icon>
+        </div>
+    </header>
+    <div class="tableRow">
+        <div class="loader" *ngIf="showBalance">
+            <h3>Retrieving benefit balance</h3>
+            <div class="col-3">
+                <div class="snippet" data-title=".dot-flashing">
+                    <div class="stage">
+                        <div class="dot-flashing"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef> Select </th>
+                <td [ngClass]="{'insufficient':lowBalance==true}" mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(row) : null"
+                                  [disabled]="lowBalance"
+                                  [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="test_name">
+                <th mat-header-cell *matHeaderCellDef> Test Name </th>
+                <td [ngClass]="{'insufficient':lowBalance==true}" mat-cell *matCellDef="let element">
+                    {{element?.test_name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="doctor_notes">
+                <th mat-header-cell *matHeaderCellDef> Doctor Notes </th>
+                <td [ngClass]="{'insufficient':lowBalance==true}" mat-cell *matCellDef="let element">
+                    {{element?.doctor_notes}} </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td [ngClass]="{'insufficient':lowBalance==true}" mat-cell *matCellDef="let element">
+                    <h4 class="status">{{element?.status | statusPipe : "request"}}</h4> </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="noData" class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="9">No data matching the filter</td>
+            </tr>
+        </table>
+    </div>
+    <h4 class="warning" *ngIf="lowBalance">Member does not have sufficient balance.</h4>
+    <div class="btn">
+        <button class="cancel" (click)="close()" mat-raised-button>Cancel</button>
+        <button [disabled]="disabledBtn" class="process" (click)="openDialog()" mat-raised-button>Proceed</button>
+    </div>
+</section>

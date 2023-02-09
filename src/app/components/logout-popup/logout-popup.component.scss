@@ -1,0 +1,21 @@
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    mat-dialog-actions{
+        float: right;
+    }
+    .btn{
+        display: flex;
+        justify-content: space-between;
+    }
+    button{
+        background-image: linear-gradient(to right, #1a1d6c, #00b790);
+        width: 140px;
+        height: 50px;
+        font-size: 20px;
+        margin-top: 10px;
+        color: white;
+    }
+}

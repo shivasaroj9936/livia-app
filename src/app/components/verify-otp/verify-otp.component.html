@@ -1,0 +1,21 @@
+<section>
+    <header>
+        <h1>Verify OTP</h1>
+        <div class="close">
+          <mat-icon (click)="close()">close</mat-icon>
+        </div>
+    </header>
+    <main>
+        <div class="info">
+            <h3>Please insert the one time password sent to the user's phone number to accept the lab request.</h3>
+        </div>
+        <div class="form">
+            <ng-otp-input type="number" (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+            <h4 class="resend">Not recieved yet? <a (click)="resendCode()">Resend</a></h4>
+        </div>
+    </main>
+    <div class="btn">
+        <button class="cancel" (click)="close()" mat-raised-button>Cancel</button>
+        <button [disabled]="disabledBtn" class="process" (click)="verifyOtp()" mat-raised-button>Confirm OTP</button>
+    </div>
+</section>

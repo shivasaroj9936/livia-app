@@ -1,0 +1,17 @@
+<section>
+  <!-- <div class="left">
+    <button routerLink="/dashboard/web-managment">Template Management</button>
+    <button routerLink="/dashboard/web-managment/page-managment">Page Management</button>
+  </div> -->
+  <mat-card class="main">
+    <div [routerLink]="['/dashboard/web-managment']" class="textDecor" routerLinkActive="active">Template Management</div><br>
+    <div [routerLink]="['/dashboard/web-managment/page-managment']" class="textDecor" routerLinkActive="active">Page Management</div>
+ </mat-card>
+  <!-- <nav mat-tab-nav-bar class="left">
+    <a mat-tab-link routerLink="/dashboard/web-managment" routerLinkActive="active-link">Template Management</a>
+    <a mat-tab-link routerLink="/dashboard/web-managment/page-managment" routerLinkActive="active-link">Page Management</a>
+  </nav> -->
+  <div class="form">
+    <router-outlet></router-outlet>
+  </div>
+</section>

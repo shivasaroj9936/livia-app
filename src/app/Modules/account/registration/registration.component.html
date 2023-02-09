@@ -1,0 +1,10 @@
+<section>
+    <div class="step">
+        <button *ngIf="isShow" class="back" (click)="onClick(stepper)" mat-button ><mat-icon>arrow_back</mat-icon></button>
+        <mat-stepper class="stepper" #stepper  (selectionChange)="setIndex($event)" (click)="triggerClick($event)">
+            <mat-step><app-add-profile></app-add-profile> </mat-step>
+            <mat-step><app-document></app-document> </mat-step>
+            <mat-step><app-lab-photo></app-lab-photo> </mat-step>
+          </mat-stepper>
+    </div>
+</section>

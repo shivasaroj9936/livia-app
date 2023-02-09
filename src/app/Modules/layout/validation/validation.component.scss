@@ -1,0 +1,22 @@
+section{
+    .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        text-align: center;
+        img{
+            width: 150px;
+            height: 150px;
+        }
+        h1{
+            color: #2e1b77;
+            font-size: 28px;
+            font-weight: 550;
+        }
+        p{
+            color: gray;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<div class="content">
+    <h1>
+      Welcome to Livia <br />
+      Lab Portal
+    </h1>
+    <nav *ngIf='showNav' mat-tab-nav-bar ngClass="tabs">
+      <a mat-tab-link routerLink="/log-in" routerLinkActive="active-link">
+        Login</a>
+      <a mat-tab-link routerLink="/sign-up" routerLinkActive="active-link">
+        Sign Up</a>
+    </nav>
+    <router-outlet  (activate)="changeOfRoutes()"></router-outlet>
+</div>

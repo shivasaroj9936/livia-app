@@ -1,0 +1,23 @@
+section{
+    .back{
+        position: absolute;
+        // left: 20px;
+        top: 10px;
+    }
+    .step{
+        position: relative;
+    }
+    .stepper{
+        background-color: transparent;
+        color: gray;
+        ::ng-deep{
+            .mat-horizontal-stepper-header-container {
+                padding-left: 290px;
+                height: 40px;
+            }
+            .mat-step-icon{
+                background-color: #00d097;
+            }
+        } 
+    }
+}

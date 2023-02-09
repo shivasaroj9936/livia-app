@@ -1,0 +1,160 @@
+@mixin box-style {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px -3px gray, 0px 8px 10px 1px white, 0px 3px 14px 2px white;
+}
+@mixin btn-style {
+    background-color: white;
+    color: #5ae0ba;
+    height: 50px;
+    box-shadow: 5px 5px 5px -3px gray, 0px 8px 10px 1px white, 0px 3px 14px 2px white;
+}
+@mixin img-style {
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+section {
+    .spin {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 25% auto;
+        column-gap: 15px;
+        @media screen and (max-width: 1080px) {
+            grid-template-columns: auto;
+        }
+        h2,
+        h4 {
+            color: #2e1b77;
+        }
+        .left {
+            display: grid;
+            justify-content: center;
+            width: 80%;
+            height: fit-content;
+            padding: 30px 0;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px -3px gray, 0px 8px 10px 1px white, 0px 3px 14px 2px white;
+            @media screen and (max-width: 1080px) {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .profile {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+                border-bottom: 1px solid rgb(201, 196, 196);
+                img {
+                    height: 80px;
+                    width: 80px;
+                    border-radius: 10px;
+                    border: 2px solid black;
+                }
+            }
+            .info {
+                div {
+                    display: flex;
+                    mat-icon {
+                        min-width: 35px;
+                    }
+                }
+            }
+            button {
+                @include btn-style();
+            }
+        }
+        .right {
+            .image {
+                @include box-style();
+                @media screen and (max-width: 490px) {
+                    padding: 0;
+                    border-radius: 5px;
+                    margin: 0;
+                    border: 1px solid rgb(219, 214, 214);
+                }
+                .cursor {
+                    padding: 20px;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
+                    padding: 2% 6%;
+                    border: 1px solid rgb(219, 214, 214);
+                    @media screen and (max-width: 490px) {
+                        padding: 0;
+                        border-radius: 5px;
+                        margin-bottom: 0;
+                        border: 1px solid rgb(219, 214, 214);
+                    }
+                }
+            }
+            .bio {
+                @include box-style();
+            }
+            .doc {
+                @include box-style();
+                .upload {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    img {
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 50%;
+                    }
+                    @media screen and (max-width: 490px) {
+                        flex-wrap: wrap;
+                    }
+                }
+                img {
+                    @include img-style();
+                }
+            }
+            .company {
+                @include box-style();
+                display: grid;
+                .data {
+                    display: flex;
+                    justify-content: space-evenly;
+                    .insurance {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    @media screen and (max-width: 490px) {
+                        flex-wrap: wrap;
+                    }
+                }
+                img {
+                    @include img-style();
+                }
+            }
+            .payment {
+                @include box-style();
+                .info {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                button {
+                    @include btn-style();
+                }
+                .data {
+                    display: grid;
+                    justify-content: center;
+                    align-items: center;
+                    @include box-style();
+                    margin-top: 10px;
+                    min-height: 300px;
+                }
+            }
+        }
+    }
+}

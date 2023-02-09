@@ -1,0 +1,96 @@
+section {
+  form {
+    .section {
+      box-shadow: 5px 5px 5px -3px white, 0px 8px 10px 1px white, 0px 3px 14px 2px white;
+      padding: 2% 1%;
+      margin-bottom: 2%;
+      border-radius: 5px;
+      h1 {
+        color: #353a91;
+        font-weight: 500;
+      }
+      .text-area{
+        width: 100%;
+      }
+      button {
+        width: 15%;
+        color: white;
+        background-image: linear-gradient(to right, #1a1d6c, #00b790);
+        padding: 5px;
+        margin-top: 1%;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 8px;
+        ::ng-deep .mat-progress-spinner circle,
+        .mat-spinner circle {
+          stroke: white;
+        }
+      }
+      button:hover {
+        background-image: linear-gradient(to right, #00b790, #1a1d6c);
+      }
+      .btn {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .faq {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .left {
+          display: flex;
+        }
+        .right {
+          display: flex;
+          align-items: center;
+          button {
+            height: 30px;
+          }
+          .del {
+            margin-left: 5px;
+            background-image: linear-gradient(to right, red, red);
+          }
+        }
+      }
+      .email {
+        display: flex;
+        flex-direction: column;
+        .field {
+          display: grid;
+          grid-template-columns: 50% auto;
+          button {
+            height: 50px;
+            margin-left: 8px;
+          }
+        }
+      }
+      .emailData {
+        box-shadow: 5px 5px 5px -3px white, 0px 8px 10px 1px white, 0px 3px 14px 2px white;
+        padding: 1%;
+        table {
+          background-color: #edf0f2;
+          width: 100%;
+          border-radius: 6px;
+          th {
+            background-color: white;
+            color: #353a91;
+            border-radius: 6px;
+            font-size: 20px;
+            text-align: center;
+          }
+          tr{
+            text-align: center;
+          }
+          button{
+            background-color: red;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+section {
+  display: grid;
+  grid-template-columns: 20% auto;
+  column-gap: 3%;
+  .main {
+    box-shadow: 5px 5px 5px -3px grey, 0px 8px 10px 1px white, 0px 3px 14px 2px white;
+    background-color: #edf0f2;
+    height: 180px;
+    .mat-card > :last-child:not(.mat-card-footer) {
+      margin-bottom: 75px;
+    }
+    .textDecor {
+      text-decoration: none;
+      font-size: 20px;
+      padding: 15px;
+      cursor: pointer;
+    }
+    .active {
+      background-color: #00ce97;
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      padding: 20px;
+      border-bottom-left-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+  }
+}

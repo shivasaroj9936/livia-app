@@ -1,0 +1,159 @@
+@mixin loader {
+    .dot-flashing {
+        position: relative;
+        margin-top: 8px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: black;
+        color: black;
+        animation: dotFlashing 1s infinite linear alternate;
+        animation-delay: 0.5s;
+    }
+
+    .dot-flashing::before,
+    .dot-flashing::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        // bottom: 30;
+    }
+
+    .dot-flashing::before {
+        left: -15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: black;
+        color: black;
+        animation: dotFlashing 1s infinite alternate;
+        animation-delay: 0s;
+    }
+
+    .dot-flashing::after {
+        left: 15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background-color: black;
+        color: black;
+        animation: dotFlashing 1s infinite alternate;
+        animation-delay: 1s;
+    }
+
+    @keyframes dotFlashing {
+        0% {
+            background-color: black;
+        }
+        50%,
+        100% {
+            background-color: gray;
+        }
+    }
+}
+section {
+  overflow: hidden;
+    header {
+        position: relative;
+        background-color: #007b81;
+        color: white;
+        text-align: center;
+        padding: 1px 0;
+        h1 {
+            padding-top: 3px;
+        }
+        .close{
+          position: absolute;
+          top: 0;
+          right: 5px;
+          mat-icon{
+            font-size: 30px;
+            cursor: pointer;
+          }
+        }
+    }
+    .tableRow {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #eaeef0;
+        margin: 2%;
+        padding: 1%;
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px -3px gray, 0px 8px 10px 1px white, 0px 3px 14px 2px white;
+        .loader {
+            display: flex;
+            h3 {
+                color: #007b81;
+                margin-right: 30px;
+            }
+            @include loader();
+        }
+        table {
+            width: 98%;
+            border-radius: 5px;
+            background-color: #eaeef0;
+            th {
+                color: #25149d;
+                font-size: 16px;
+                background-color: white;
+                text-align: center;
+            }
+            th:first-child {
+                border-radius: 10px 0 0 10px;
+            }
+            th:last-child {
+                border-radius: 0 10px 10px 0;
+            }
+            .insufficient{
+                background-color: #f2d6de;
+            }
+            .status{
+                color: #84c5ea;
+                background-color: #eff5fa;
+                padding: 4px;
+                margin-top: 10px;
+                border-radius: 8px;
+            }
+            td {
+                text-align: center;
+            }
+            td:first-child {
+                border-radius: 10px 0 0 10px;
+            }
+            td:last-child {
+                border-radius: 0 10px 10px 0;
+            }
+        }
+    }
+    .warning{
+        color: red;
+        margin-left: 2%;
+    }
+    .btn {
+        display: flex;
+        justify-content: center;
+        button {
+            height: 40px;
+            width: 100px;
+            color: white;
+            margin: 1%;
+        }
+        .cancel {
+            background-color: #929292;
+        }
+        .process {
+            background-image: linear-gradient(to right, #1a1d6c, #00b790);
+        }
+        .process:disabled{
+            cursor: not-allowed;
+        }
+    }
+}
+::ng-deep {
+    .mat-dialog-container {
+        padding: 0;
+    }
+}

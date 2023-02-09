@@ -1,0 +1,166 @@
+section {
+    .spin{
+        display: flex;
+        justify-content: center;
+    }
+    h3 {
+        font-weight: 500;
+    }
+    button:disabled{
+        background-color: rgb(223, 218, 218);
+        color: gray;
+    }
+    .detail {
+        display: grid;
+        grid-template-columns: 24% 36% 36%;
+        justify-content: space-between;
+        @media screen and (max-width: 980px) {
+            grid-template-columns:90%;
+            justify-content: center;
+        }
+        img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+            .data {
+                margin-left: 5%;
+            }
+            .email{
+                button{
+                    font-size: 18px;
+                    cursor: pointer;
+                    background-color: #eefcf7;
+                    color: #25cc9e;
+                    border-radius: 5px;
+                    margin-left: 4px;
+                    border: none;
+                    width: 120px;
+                    height: 50px;
+                }
+                button:disabled{
+                    background-color: rgb(223, 218, 218);
+                    color: gray;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+    .box {
+        padding: 1%;
+        box-shadow: 5px 5px 5px -3px gray, 0px 8px 10px 1px rgb(255, 255, 255), 0px 3px 14px 2px white;
+        border-radius: 10px;
+    }
+    .heading {
+        margin-top: 2%;
+        color: #270872;
+    }
+    .test {
+        display: grid;
+        grid-template-columns: 24% 74%;
+        justify-content: space-between;
+        @media screen and (max-width: 980px) {
+            grid-template-columns:90%;
+            justify-content: center;
+        }
+        .left {
+            display: flex;
+            height: 120px;
+            justify-content: space-between;
+            padding: 5%;
+            @media screen and (max-width: 980px) {
+                height: auto;
+            }
+            .data {
+                padding: 2%;
+                border-radius: 10px;
+                background-color: #00d097;
+                color: white;
+                width: 100%;
+            }
+        }
+        .right {
+            .first {
+                display: flex;
+                justify-content: space-between;
+                button {
+                    font-size: 18px;
+                    cursor: pointer;
+                    background-color: #eefcf7;
+                    color: #25cc9e;
+                    border-radius: 10px;
+                    border: none;
+                    width: 160px;
+                }
+            }
+            mat-form-field {
+                width: 100%;
+            }
+            .content {
+                display: flex;
+                .doc {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: #cbccce;
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 5px;
+                    padding: 5px;
+                    .add {
+                        font-size: 20px;
+                        height: 55px;
+                        background-color: white;
+                        color: black;
+                        border-radius: 51%;
+                        border: 1px solid gray;
+                    }
+                }
+                .preview {
+                    position: relative;
+                    a {
+                        position: absolute;
+                        z-index: 1;
+                        margin-left: 80px;
+                        mat-icon {
+                            color: black;
+                        }
+                    }
+                    a:hover {
+                        cursor: pointer;
+                    }
+                    img {
+                        height: 80px;
+                        width: 80px;
+                        border-radius: 10px;
+                        margin: 0 10px;
+                    }
+                }
+            }
+        }
+        .btn {
+            display: flex;
+            button {
+                width: 150px;
+                color: white;
+                margin: 10px 10px 0 0;
+                background-image: linear-gradient(to right, #1a1d6c, #00b790);
+                padding: 5px;
+                font-size: 18px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                ::ng-deep .mat-progress-spinner circle,
+                .mat-spinner circle {
+                    stroke: white;
+                }
+            }
+            button:hover {
+                background-image: linear-gradient(to right, #00b790, #1a1d6c);
+            }
+        }
+    }
+}

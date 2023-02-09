@@ -1,0 +1,51 @@
+<section>
+    <header>
+        <h1>Insurance Details</h1>
+        <div class="close">
+          <mat-icon (click)="close()">close</mat-icon>
+        </div>
+    </header>
+    <div class="spin">
+        <mat-spinner [diameter]="100" *ngIf="spinner"></mat-spinner>
+    </div>
+    <main>
+        <div class="document" *ngIf="!spinner">
+            <div class="data">
+                <div class="image">
+                    <img [src]="(imgUrl + profileData?.insurance_company_member_card)" alt="insurance_company_member_card-img">
+                </div>
+                <h4>Membership Card</h4>
+            </div>
+            <div class="data">
+                <div class="image">
+                    <img [src]="(imgUrl + profileData?.photo_id_number_frontend)"  alt="photo_id_number_frontend-img">
+                </div>
+                <h4>Member's ID photo front</h4>
+            </div>
+            <div class="data">
+                <div class="image">
+                    <img [src]="(imgUrl + profileData?.photo_id_number_backend)"  alt="photo_id_number_backend-img">
+                </div>
+                <h4>Member's ID photo back</h4>
+            </div>
+            <div class="data">
+                <div class="image">
+                    <img [src]="(imgUrl + profileData?.insurance_company_selfie)"  alt="insurance_company_selfie-img">
+                </div>
+                <h4>Member's Photo with Membership Card</h4>
+            </div>
+        </div>
+        <div class="description">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(true) : null" [checked]="selection.isSelected(true)">
+            </mat-checkbox>
+            <div class="term">
+                <span>I have verified the insurance details</span>
+                <span>OTP will be send to the patient. Please get  the OTP from patient.</span>
+            </div>
+        </div>
+    </main>
+    <div class="btn">
+        <button class="cancel" (click)="close()" mat-raised-button>Cancel</button>
+        <button [disabled]="disabledBtn" class="process" (click)="sendOtp()" mat-raised-button>Send OTP</button>
+    </div>
+</section>

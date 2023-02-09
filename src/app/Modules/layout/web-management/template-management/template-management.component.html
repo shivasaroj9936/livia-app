@@ -1,0 +1,184 @@
+<section>
+  <form class="right">
+    <div class="section">
+      <h1>Website Color/Background Management</h1>
+      <div class="row">
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Body Background Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Footer Background Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Header Background Colour</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Default Font Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Default Link Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Button Background Colour</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Button Text Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Footer Text Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Header Text Colour</label>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h1>Website Font Mangement</h1>
+      <div class="top">
+        <div class="input">
+          <label>Default Font Family</label>
+          <mat-form-field appearance="outline">
+            <mat-select>
+              <mat-option value="">None</mat-option>
+              <mat-option>
+                <!-- {{insurance.name}} -->
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="input">
+          <label>Default Body Font Size</label>
+          <mat-form-field appearance="outline">
+            <mat-select>
+              <mat-option value="">None</mat-option>
+              <mat-option>
+                <!-- {{insurance.name}} -->
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="input">
+          <label>Footer Text</label>
+          <mat-form-field appearance="outline">
+            <mat-select>
+              <mat-option value="">None</mat-option>
+              <mat-option>
+                <!-- {{insurance.name}} -->
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h1>Banner Mangement</h1>
+      <div class="row">
+        <div class="image">
+          <label>Banner Background Image</label>
+          <div *ngIf="uploadSpin1" class="logo">
+              <button type="button" mat-button (click)="fileInput1.click()">
+                  <mat-icon>add</mat-icon>
+                  <input #fileInput1 type="file" style="display: none" (change)="onFileChange($event)"/>
+              </button>
+          </div>
+          <!-- <img *ngIf="!uploadSpin1 && !imgSpinner" id="blah" [src]="img+this.regForm.get('avatar')?.value" alt="your image" /> -->
+          <mat-spinner [diameter]="60" *ngIf="imgSpinner"></mat-spinner>
+        </div>
+        <div class="input">
+          <label>Banner Background Heading</label>
+          <mat-form-field appearance="outline">
+            <textarea matInput placeholder="" rows="4" required></textarea>
+          </mat-form-field>
+        </div>
+        <div class="input">
+          <label>Banner Background Description</label>
+          <mat-form-field appearance="outline">
+            <textarea matInput placeholder="" rows="4" required></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#ffffff" />
+          </mat-form-field>
+          <label for="favcolor">Banner Background Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Banner Heading Colour</label>
+        </div>
+        <div class="box">
+          <mat-form-field>
+            <input matInput type="color" value="#1d6573" />
+          </mat-form-field>
+          <label for="favcolor">Banner Sub Heading Colour</label>
+        </div>
+      </div>
+      <div class="top">
+        <div class="input">
+          <label>Banner Heading Font Size</label>
+          <mat-form-field appearance="outline">
+            <mat-select>
+              <mat-option value="">None</mat-option>
+              <mat-option>
+                <!-- {{insurance.name}} -->
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="input">
+          <label>Banner Sub Heading Font Size</label>
+          <mat-form-field appearance="outline">
+            <mat-select>
+              <mat-option value="">None</mat-option>
+              <mat-option>
+                <!-- {{insurance.name}} -->
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="btn">
+      <button type="submit" mat-raised-button>
+        <ng-container *ngIf="!updateData">Save</ng-container> <mat-spinner [diameter]="40" *ngIf="updateData"></mat-spinner>
+    </button>
+    </div>
+  </form>
+</section>

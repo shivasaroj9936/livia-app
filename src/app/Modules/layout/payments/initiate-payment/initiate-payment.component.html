@@ -1,0 +1,33 @@
+<section>
+    <div class="spin"><mat-spinner [diameter]="100" *ngIf="spinner"></mat-spinner></div>
+    <div class="detail" *ngIf="!spinner">
+        <div class="card" *ngFor="let data of paymentData?.claim_account; let idx = index">
+            <h2>{{idx+1}} CLAIM ID: {{data?.claim_id}}</h2>
+            <div class="info">
+                <div class="row">
+                    <h3>Claim Amount</h3>
+                    <h3 class="value">{{data?.default_full_amount}}</h3>
+                </div>
+                <div class="row">
+                    <h3>Platform Access Fees</h3>
+                    <h3 class="value">{{data?.lab_percent_amount + "("+data?.lab_percent_for_claim+"%)"}}</h3>
+                </div>
+                <div class="row">
+                    <h3>Transaction Cost</h3>
+                    <h3 class="value">{{data?.transaction_cost + "("+data?.transaction_percent+"%)"}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Net Availability</h3>
+                <h3 class="value">{{data?.final_amount + "KES"}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="net" *ngIf="!spinner">
+        <div class="left">
+            <h3>Amount Payable</h3>
+            <h3>{{paymentData?.total_amount + "KES"}}</h3>
+        </div>
+        <div><button mat-button (click)="makePayment()">Initiate Payment</button></div>
+    </div>
+</section>

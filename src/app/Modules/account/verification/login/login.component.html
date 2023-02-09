@@ -1,0 +1,26 @@
+<section>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <label>Email</label>
+        <mat-form-field appearance="outline">
+            <input matInput formControlName="email" placeholder="user@gmail.com" required>
+            <mat-error *ngFor="let validation of validationMessage?.email">
+            <mat-error class="error-message" *ngIf="loginForm?.get('email')?.hasError(validation?.type) && (loginForm?.get('email')?.dirty || loginForm?.get('email')?.touched)">{{validation.message}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <label>Password</label>
+        <mat-form-field appearance="outline">
+            <a (click)="toggleShow()">
+                <mat-icon *ngIf="!showPassword" class="loc">visibility</mat-icon>
+                <mat-icon *ngIf="showPassword" class="loc">visibility_off</mat-icon>
+            </a>
+            <input matInput [type]="showPassword ? 'text' : 'password'"  formControlName="password" placeholder="*******"  required>
+            <mat-error *ngFor="let validation of validationMessage?.password">
+                <mat-error class="error-message" *ngIf="loginForm?.get('password')?.hasError(validation?.type) && (loginForm?.get('password')?.dirty || loginForm?.get('password')?.touched)">{{validation.message}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <div class="nav">
+            <a  (click)="openDialog()">Forgot Password?</a>
+            <button type="submit" mat-raised-button color="primary"> <ng-container *ngIf="!spinner">Get Started</ng-container> <mat-spinner [diameter]="40" *ngIf="spinner"></mat-spinner></button>
+        </div>
+    </form>
+</section>

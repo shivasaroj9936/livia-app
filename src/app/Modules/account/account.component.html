@@ -1,0 +1,11 @@
+<section>
+  <div class="box">
+    <div class="banner">
+      <img *ngIf="!regImg" src="../../../assets/banner.png" alt="">
+      <img *ngIf="regImg" src="../../../assets/register.png" alt="">
+    </div>
+    <div class="content">
+      <router-outlet (activate)="changeOfRoutes()"></router-outlet>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<section>
+    <form [formGroup]="formService.registerForm">
+        <h1>Add Lab Photos</h1>
+        <div *ngIf="showErr"><mat-error *ngIf="formService.registerForm.invalid">*Fill all the required fields</mat-error></div>
+        <div class="content">
+            <div class="doc">
+                <button *ngIf="!uploadSpin" type="button" class="add" mat-button (click)="fileInput1.click()">+
+                    <input #fileInput1 id="file" multiple="" type="file" style="display:none;" (change)="onFileChange($event)"/>
+                </button>
+                <mat-spinner class="spin" [diameter]="40" *ngIf="uploadSpin"></mat-spinner>
+            </div>
+            <ng-container *ngFor="let url of payLoadData; let idx= index">
+              <div class="preview">
+                <a (click)="deleteImg(idx)">
+                    <mat-icon class="loc">cancel</mat-icon>
+                </a>
+                <img [src]="img+url" alt="">
+              </div>
+            </ng-container>
+        </div>
+        <div class="nav">
+            <button (click)="navigateToValid()" type="submit" mat-raised-button>
+                Send For Validation
+            </button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,102 @@
+section {
+    .content {
+        .dr {
+            width: 18%;
+        }
+        .search {
+            display: flex;
+            justify-content: space-between;
+            @media screen and (max-width: 1200px) {
+                flex-direction: column;
+                justify-content: flex-start;
+                background-color: #edf0f2;
+                ::ng-deep{
+                  .mat-form-field-appearance-outline{
+                    width: 100%;
+                  }
+                }
+              }
+        }
+        .date {
+            position: relative;
+        }
+        .cancel {
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            bottom: 13px;
+            z-index: 1;
+        }
+        .filter {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            column-gap: 15px;
+            @media screen and (max-width: 990px) {
+                grid-template-columns: auto auto;
+            }
+            @media screen and (max-width: 550px) {
+                grid-template-columns: auto;
+            }
+            ::ng-deep {
+                .mat-icon-button {
+                    background-color: transparent;
+                    box-shadow: none;
+                }
+            }
+        }
+        .spin {
+            display: flex;
+            justify-content: center;
+        }
+        .data{
+            overflow: auto;
+            table {
+                width: 100%;
+                background-color: #f1f3f5;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                th {
+                    color: #25149d;
+                    font-size: 16px;
+                    background-color: white;
+                    text-align: center;
+                }
+                th:first-child {
+                    border-radius: 10px 0 0 10px;
+                }
+                th:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+                .process{
+                    background-color: #d7f2fc;
+                    color: #4aaae8;
+                }
+                .sent{
+                    background-color: #eefcf7;
+                    color: #09c986;
+                }
+                .preauth{
+                    background-color: rgb(245, 245, 192);
+                    color: yellow;
+                }
+                .decline{
+                    background-color: rgb(247, 186, 186);
+                    color: red;
+                }
+                .mat-row:nth-child(even) {
+                    background-color: white;
+                }
+                button{
+                    background-color: transparent;
+                    border-radius: 25px;
+                    border: none;
+                    height: 40px;
+                    width: 120px;
+                    font-size: 15px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

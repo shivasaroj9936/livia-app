@@ -1,0 +1,9 @@
+<section>
+    <h2>Are you sure to logout?</h2>
+    <div  mat-dialog-actions class="btn">
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data" (click)="onOkClick()" cdkFocusInitial>
+          OK, Logout
+        </button>
+      </div>
+</section>

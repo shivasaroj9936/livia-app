@@ -1,0 +1,56 @@
+section {
+    .content {
+        .dr {
+            width: 18%;
+        }
+        .search {
+            display: flex;
+            justify-content: space-between;
+            @media screen and (max-width: 1200px) {
+                flex-direction: column;
+                justify-content: flex-start;
+                background-color: #edf0f2;
+                ::ng-deep {
+                    .mat-form-field-appearance-outline {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .spin {
+            display: flex;
+            justify-content: center;
+        }
+        .data{
+            overflow: auto;
+            table {
+                width: 100%;
+                background-color: #f1f3f5;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                th {
+                    color: #25149d;
+                    font-size: 16px;
+                    background-color: white;
+                    text-align: center;
+                }
+                th:first-child {
+                    border-radius: 10px 0 0 10px;
+                }
+                th:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+                td:first-child {
+                    border-radius: 10px 0 0 10px;
+                }
+                td:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+                .mat-row:nth-child(even) {
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
