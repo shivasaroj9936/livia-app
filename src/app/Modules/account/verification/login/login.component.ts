@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
     private logService: LoginServiceService,
     public dialog: MatDialog,
     private commonService: CommonServiceService,
-    private httpService:CommonHTTPService
-  ) {}
+    private httpService: CommonHTTPService
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       });
     dialogRef.afterClosed();
   }
- 
+
   onSubmit() {
     const formValue = this.loginForm.value;
     formValue['phone_id'] = btoa(this.loginForm.controls.email.value + this.commonService.hashValue());
@@ -58,29 +58,29 @@ export class LoginComponent implements OnInit {
     formValue['liviaapp-apiversion'] = 2.0;
     if (this.loginForm.valid) {
       this.spinner = true;
-      this.httpService.put(Constant.loginUrl,formValue).subscribe((res) => {
-        if (res.user_status == '1' || res.user_status == '6') {
+      this.httpService.put(Constant.loginUrl, formValue).subscribe((res) => {
+        if (res?.user_status == '1' || res?.user_status == '6') {
           localStorage.setItem('access_token', res.access_token);
           localStorage.setItem('refresh_token', res.refresh_token);
-            if (res.user.status_name=='In registration process') {
-              this.commonService.authSnackBar(res.user.status_name, 'Close', 'red-snackbar');
-              this.spinner = false; 
-            } else {
-              this.logService.setUserData(res.user);
-              localStorage.setItem('isAuth', res.user.user_id);
-              localStorage.setItem('phone_id', formValue['phone_id']);
-              this.router.navigate(['/dashboard']);
-              this.spinner = false; 
-            }
+          if (res.user.status_name == 'In registration process') {
+            this.commonService.authSnackBar(res.user.status_name, 'Close', 'red-snackbar');
+            this.spinner = false;
           } else {
-            this.commonService.authSnackBar(res.message, 'Close', 'red-snackbar');
+            this.logService.setUserData(res.user);
+            localStorage.setItem('isAuth', res.user.user_id);
+            localStorage.setItem('phone_id', formValue['phone_id']);
+            this.router.navigate(['/dashboard']);
             this.spinner = false;
           }
-        },
-        (err) => {
-          this.commonService.authSnackBar(err.error.messages[0],'Close','red-snackbar');
-          console.log(err.error.messages[0], 'errr in login page!');
+        } else {
+          this.commonService.authSnackBar(res.messages[0], 'Close', 'red-snackbar');
           this.spinner = false;
+        }
+      },
+        (err) => {
+          this.commonService.authSnackBar('Email or Password is Incorrect !', 'Close', 'red-snackbar');
+          this.spinner = false;
+
         }
       );
     }

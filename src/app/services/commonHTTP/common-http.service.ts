@@ -21,7 +21,7 @@ export class CommonHTTPService {
   }
 
   put(apiRoute:any,body:any):Observable<any> {
-    return this.http.put(apiRoute, body);
+    return this.http.put(apiRoute, body) as Observable<any>;
   }
 
   delete(apiRoute:any):Observable<any> {
